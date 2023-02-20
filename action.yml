@@ -1,5 +1,5 @@
 name: 'Prepare static NextJS build'
-description: 'Prepare static export of NextJS build and upload as artifact.'
+description: 'Prepare static NextJS build, exported to ./out'
 runs:
   using: "composite"
   steps:
@@ -28,7 +28,3 @@ runs:
       shell: bash
     - run: npm run export
       shell: bash
-    - uses: actions/upload-artifact@v3 
-      with:
-        name: build
-        path: ./out  
