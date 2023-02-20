@@ -1,5 +1,5 @@
 name: 'Prepare static NextJS build'
-description: 'Greet someone'
+description: 'Prepare static export of NextJS build and upload as artifact.'
 runs:
   using: "composite"
   steps:
