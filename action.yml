@@ -1,5 +1,12 @@
 name: 'Prepare static NextJS build'
 description: 'Prepare static NextJS build, exported to ./out'
+inputs:
+  build-version:
+    description: 'Build version to be displayed on front-end.'
+    required: false
+  build-environment:
+    description: 'Build environment to be displayed on front-end.'
+    required: false
 runs:
   using: "composite"
   steps:
@@ -7,9 +14,9 @@ runs:
     - uses: actions/setup-node@v3
       with:
         node-version: 16
-    - run: echo "NEXT_PUBLIC_BUILD_VERSION=${{ github.run_number }}" >> $GITHUB_ENV   
+    - run: echo "NEXT_PUBLIC_BUILD_VERSION=${{ inputs.build-version }}" >> $GITHUB_ENV   
       shell: bash
-    - run: echo "NEXT_PUBLIC_BUILD_ENVIRONMENT=${{ vars.BUILD_ENVIRONMENT }}" >> $GITHUB_ENV      
+    - run: echo "NEXT_PUBLIC_BUILD_ENVIRONMENT=${{ inputs.build-environment }}" >> $GITHUB_ENV      
       shell: bash
     - run: echo "NEXT_PUBLIC_COMMIT_ID=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_ENV
       shell: bash
